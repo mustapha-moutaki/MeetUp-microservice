@@ -18,3 +18,4 @@ WORKDIR /app
 COPY --from=build /workspace/config-service/target/config-service-1.0.0-SNAPSHOT.jar app.jar
 EXPOSE 8888
 ENTRYPOINT ["java","-jar","/app/app.jar"]
+
