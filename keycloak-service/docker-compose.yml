@@ -1,0 +1,13 @@
+# Standalone Keycloak Docker Compose (for development/testing without the full stack)
+# Usage: docker compose -f keycloak-service/docker-compose.yml up -d
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:25.0.6
+    command: start-dev --import-realm
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8084:8080"
+    volumes:
+      - ./realm-export.json:/opt/keycloak/data/import/realm-export.json:ro
