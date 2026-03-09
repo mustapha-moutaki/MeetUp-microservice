@@ -1,0 +1,15 @@
+spring:
+  config:
+    import: optional:configserver:http://config-service:8888
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8084/realms/conferencehub
+          jwk-set-uri: http://keycloak:8080/realms/conferencehub/protocol/openid-connect/certs
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka
+

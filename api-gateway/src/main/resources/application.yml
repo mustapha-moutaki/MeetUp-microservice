@@ -1,0 +1,33 @@
+# ConferenceHub - API Gateway (Spring Cloud Gateway)
+# Commentaire: ce fichier definit le port, la decouverte Eureka et le routage vers les micro-services.
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: optional:configserver:http://localhost:8888
+  cloud:
+    gateway:
+      routes:
+        - id: keynote-service
+          uri: lb://keynote-service
+          predicates:
+            - Path=/api/keynotes/**
+        - id: conference-service
+          uri: lb://conference-service
+          predicates:
+            - Path=/api/conferences/**
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/api/notifications/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
