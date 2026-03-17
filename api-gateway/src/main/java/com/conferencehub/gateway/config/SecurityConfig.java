@@ -14,6 +14,7 @@ public class SecurityConfig {
 
   @Bean
   SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http, Environment env) {
+
     String issuerUri = env.getProperty("spring.security.oauth2.resourceserver.jwt.issuer-uri");
 
     http.csrf(ServerHttpSecurity.CsrfSpec::disable);
