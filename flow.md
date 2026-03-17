@@ -105,7 +105,6 @@ To see how a single request interacts with multiple services:
 2. Click **"Run Query"**.
 3. You will see graphical traces for the `POST /api/conferences` request, showing exactly how long the request spent inside the Gateway, Conference Service, and the Feign call to Keynote Service!
 
-
 <!-- this is from keyalocak -->
 ### login credentails:
 > grant_type: password
